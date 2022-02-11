@@ -10,10 +10,29 @@ import { LitElement, html, customElement, property, css } from 'lit-element';
 @customElement('nav-view')
 export class NavView extends LitElement {
     static styles = css`
+        nav {
+            width: 100%;
+            height: 56px;
+            background-color: #550455;
+        }
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            height: 56px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        ul li{
+            margin: 0 15px;
+        }
+        button { 
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            color: white;
+            text-transform: uppercase;
         }
   `;
 
@@ -39,7 +58,6 @@ export class NavView extends LitElement {
                 <li><button @click=${this._onClick} part="button" data-view="end">End</button></li>
             </ul>
         </nav>
-      <h1> FUCK ${this.name}</h1>
     `;
     }
 

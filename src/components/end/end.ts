@@ -11,9 +11,8 @@ export class EndView extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border: solid 1px gray;
+      color: white;
       padding: 16px;
-      max-width: 800px;
     }
   `;
 
@@ -31,7 +30,7 @@ export class EndView extends LitElement {
 
   render() {
     return html`
-    <h1>FUCK, ${this.name}!</h1>
+    <h1>... , ${this.name}!</h1>
     `;
   }
 }
