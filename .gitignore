@@ -1,0 +1,9 @@
+/node_modules/
+/lib/
+/test/
+
+# top level source
+lit-gallery.js
+lit-gallery.js.map
+lit-gallery.d.ts
+lit-gallery.d.ts.map
