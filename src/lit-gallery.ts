@@ -43,7 +43,7 @@ export class LitGallery extends LitElement {
 			case 'home':
 			default:
 				returnHTML = html`
-        <home-view obj="${this.obj}"></home-view>
+        <home-view .obj="${this.obj}"></home-view>
         `;
 				break;
 			case 'gallery':
@@ -76,8 +76,6 @@ export class LitGallery extends LitElement {
 			})
 			.then(json => {
 				this.obj = json;
-				console.log(this.obj)
-				this.dispatchEvent(new CustomEvent(this.fetchEvent, { detail: json, bubbles: true, composed: true }))
 			})
 			.catch(function (error) {
 				console.error(error.message);

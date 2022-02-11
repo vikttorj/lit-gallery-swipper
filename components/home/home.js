@@ -18,16 +18,16 @@ let HomeView = class HomeView extends LitElement {
          * The name to say "Hello" to.
          */
         this.name = 'HOME';
-        this.obj = {};
+        this.obj = {
+            titulo: ''
+        };
     }
     render() {
-        console.log(this.obj);
         return html `
       <article itemtype="http://schema.org/NewsArticle" class="gallery-cover-article">
         <header class="gallery-cover-article__header">
             <h2 class="gallery-cover-article__kicker">Música</h2>
-            <h1 class="gallery-cover-article__heading" itemprop="headline">Sabrina Salerno posa en lencería y hace gimnasia
-                con transparencias con 53 años</h1>
+            <h1 class="gallery-cover-article__heading" itemprop="headline">${this.obj.titulo}</h1>
             <p class="gallery-cover-article__author">
                 <!-- react-text: 84 -->
                 <!-- /react-text -->
@@ -56,12 +56,6 @@ let HomeView = class HomeView extends LitElement {
         </nav>
     </article>
     `;
-    }
-    connectedCallback() {
-        super.connectedCallback();
-    }
-    disconnectedCallback() {
-        super.disconnectedCallback();
     }
 };
 HomeView.styles = css `

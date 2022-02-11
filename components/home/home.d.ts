@@ -1,4 +1,7 @@
 import { LitElement } from 'lit-element';
+interface ResponseType {
+    titulo: string;
+}
 /**
  * An example element.
  *
@@ -11,14 +14,13 @@ export declare class HomeView extends LitElement {
      * The name to say "Hello" to.
      */
     name: string;
-    obj: {};
+    obj: ResponseType;
     render(): import("lit-element").TemplateResult;
-    connectedCallback(): void;
-    disconnectedCallback(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {
         'home-view': HomeView;
     }
 }
+export {};
 //# sourceMappingURL=home.d.ts.map
