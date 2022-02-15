@@ -48,7 +48,7 @@ export class LitGallery extends LitElement {
 				break;
 			case 'gallery':
 				returnHTML = html`
-          <gallery-view></gallery-view>
+          <gallery-view .silders="${this.obj}"></gallery-view>
         `;
 				break;
 			case 'end':
