@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { LitElement, html, customElement, property, css } from 'lit-element';
+// import Swiper bundle with all modules installed
+import Swiper from 'swiper';
+// import 'swiper/css/bundle';
 /**
  * An example element.
  *
@@ -25,14 +28,45 @@ let GalleryView = class GalleryView extends LitElement {
     }
     render() {
         return html `
-    <h1>FUCK, ${this.name}!</h1>
-    <button @click=${this._onClick} part="button">
-    Click Count: ${this.count}
-    </button>
-    `;
+			<link
+			rel="stylesheet"
+			href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+			/>
+
+			<!-- Slider main container -->
+			<div class="swiper">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide">Slide 1</div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
+
+				<!-- If we need navigation buttons -->
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		`;
     }
-    _onClick() {
-        this.count++;
+    firstUpdated() {
+        console.log(this.shadowRoot.querySelector('.swiper'));
+        // init Swiper:
+        const swiper = new Swiper(this.shadowRoot.querySelector('.swiper'), {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+        console.log(swiper);
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
     }
     foo() {
         return 'foo';
@@ -40,11 +74,12 @@ let GalleryView = class GalleryView extends LitElement {
 };
 GalleryView.styles = css `
     :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
+		color: white
     }
+	.swiper {
+		width: 600px;
+		height: 300px;
+	}
   `;
 __decorate([
     property()

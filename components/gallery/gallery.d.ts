@@ -16,7 +16,8 @@ export declare class GalleryView extends LitElement {
      */
     count: number;
     render(): import("lit-element").TemplateResult;
-    private _onClick;
+    firstUpdated(): void;
+    disconnectedCallback(): void;
     foo(): string;
 }
 declare global {

@@ -18,9 +18,11 @@ let HomeView = class HomeView extends LitElement {
          * The name to say "Hello" to.
          */
         this.name = 'HOME';
+        this.view = '';
         this.obj = {
             titulo: ''
         };
+        this.navigationEvent = 'nav-navigation';
     }
     render() {
         return html `
@@ -49,13 +51,17 @@ let HomeView = class HomeView extends LitElement {
                 alt="Sabrina Salerno posa en lencería y hace gimnasia con transparencias con 53 años">
         </figure>
         <nav class="gallery-cover-article__nav">
-        <a href="#" class="view_gallery">
-                <!-- react-text: 98 -->Ver galería
-                <!-- /react-text --><i class="icon-gallery-forward"></i>
-            </a>
+            <button class="view_gallery" @click=${this._onClick} part="button" data-view="gallery">
+                    <!-- react-text: 98 -->Ver galería
+                    <!-- /react-text --><i class="icon-gallery-forward"></i>
+            </button>
         </nav>
     </article>
     `;
+    }
+    _onClick(e) {
+        this.view = e.currentTarget.dataset.view;
+        this.dispatchEvent(new CustomEvent(this.navigationEvent, { detail: this.view, composed: true }));
     }
 };
 HomeView.styles = css `
@@ -115,6 +121,8 @@ HomeView.styles = css `
         vertical-align: middle;
         position: relative;
         transition: all 200ms ease-out 0s;
+        box-shadow: none;
+        border: 0;
     }
     .view_gallery:hover{
         background-color: #a30000;
@@ -126,7 +134,13 @@ __decorate([
 ], HomeView.prototype, "name", void 0);
 __decorate([
     property()
+], HomeView.prototype, "view", void 0);
+__decorate([
+    property()
 ], HomeView.prototype, "obj", void 0);
+__decorate([
+    property()
+], HomeView.prototype, "navigationEvent", void 0);
 HomeView = __decorate([
     customElement('home-view')
 ], HomeView);

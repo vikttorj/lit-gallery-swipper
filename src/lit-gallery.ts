@@ -89,7 +89,6 @@ export class LitGallery extends LitElement {
 
 	handleNavigation(e: any): void {
 		this.view = e.detail;
-		console.log(this.view)
 	}
 }
 

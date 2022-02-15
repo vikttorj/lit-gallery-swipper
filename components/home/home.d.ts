@@ -14,8 +14,11 @@ export declare class HomeView extends LitElement {
      * The name to say "Hello" to.
      */
     name: string;
+    view: string;
     obj: ResponseType;
+    navigationEvent: string;
     render(): import("lit-element").TemplateResult;
+    private _onClick;
 }
 declare global {
     interface HTMLElementTagNameMap {

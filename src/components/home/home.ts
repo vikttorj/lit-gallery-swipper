@@ -73,6 +73,8 @@ export class HomeView extends LitElement {
         vertical-align: middle;
         position: relative;
         transition: all 200ms ease-out 0s;
+        box-shadow: none;
+        border: 0;
     }
     .view_gallery:hover{
         background-color: #a30000;
@@ -85,11 +87,17 @@ export class HomeView extends LitElement {
      */
     @property()
     name = 'HOME';
-
+    
+    @property()
+    view = '';
+    
     @property()
     obj: ResponseType = {
         titulo: ''
     };
+
+    @property()
+    navigationEvent = 'nav-navigation';
 
     render() {
         return html`
@@ -118,13 +126,18 @@ export class HomeView extends LitElement {
                 alt="Sabrina Salerno posa en lencería y hace gimnasia con transparencias con 53 años">
         </figure>
         <nav class="gallery-cover-article__nav">
-        <a href="#" class="view_gallery">
-                <!-- react-text: 98 -->Ver galería
-                <!-- /react-text --><i class="icon-gallery-forward"></i>
-            </a>
+            <button class="view_gallery" @click=${this._onClick} part="button" data-view="gallery">
+                    <!-- react-text: 98 -->Ver galería
+                    <!-- /react-text --><i class="icon-gallery-forward"></i>
+            </button>
         </nav>
     </article>
     `;
+    }
+    
+    private _onClick(e: any ) {
+        this.view = e.currentTarget.dataset.view;
+        this.dispatchEvent(new CustomEvent(this.navigationEvent, { detail: this.view, composed: true }))
     }
 
 }
